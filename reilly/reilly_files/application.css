@@ -1,0 +1,83 @@
+.targetshow-outside-frame {
+	position: relative;
+	z-index: 1;
+	height: 600px;
+	width: 960px;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+}
+
+.targetshow-target {
+	position: absolute;
+	display: none;
+}
+
+.targetshow-target a {
+	z-index: 10000;
+	overflow:hidden;
+	display: inline-block;
+}
+
+.targetshow-overlay {
+	height: 600px;
+	width: 960px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	background-image: url(../targetshow/images/black80.png);
+	padding: 0;
+	margin: 0;
+	z-index: 10000;
+	overflow: hidden;
+}
+
+.targetshow-overlay .close {
+	color: #eee;
+	float: right;
+	margin-right: 20px;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+	font-size: 30px;
+	font-family: arial;
+	text-decoration: none;
+}
+
+.targetshow-overlay .slide {
+	text-align: center;
+}
+
+.targetshow-overlay img {
+
+}
+
+.targetshow-overlay .content {
+	color: #fff;
+	padding: 20px;
+	overflow-y: auto;
+}
+
+.targetshow-overlay .north-image {
+	margin-bottom: 10px;
+}
+
+.targetshow-overlay .south-image {
+	margin-top: 10px;
+}
+
+.targetshow-overlay .east-image {
+	float: right;
+	margin-left: 10px;
+}
+
+.targetshow-overlay .west-image {
+	float: left;
+	margin-right: 10px;
+}
+
+.targetshow-overlay .content.text-left {
+	text-align: left;
+	max-height: 100%;
+}
