@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head><title>Stayer Center Email Signature Creator</title></head>
+<body style="margin: 0px;">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script language="javascript">
+
+   function doStuff()
+      {
+        var nameElement = document.getElementById("userName");
+        var theName = nameElement.value;
+		
+		var titleElement = document.getElementById("userTitle");
+        var theTitle = titleElement.value;
+				
+		var programElement = document.getElementById("userProgram");
+        var theProgram = programElement.value;
+        
+		if (theProgram === "") {
+			var titleProg = theTitle;
+		} else {
+			var titleProg = theTitle + " / " + theProgram;
+		};
+	
+		var roomElement = document.getElementById("userRoom");
+        var theRoom = roomElement.value;
+		
+		
+		var phoneElement = document.getElementById("userPhone");
+        var thePhone = phoneElement.value;
+
+		if (thePhone == "") {
+        var finalPhone = thePhone;
+		} else { 
+		var finalPhone = "P: " + thePhone;
+		}
+	
+    	var faxElement = document.getElementById("userFax");
+       var theFax = faxElement.value;
+		
+		if (theFax === "") {
+		var finalFax = theFax;
+		} else {
+		var finalFax = "F: " + theFax;
+		}
+		
+		
+		var mobileElement = document.getElementById("userMobile");
+		var theMobile = mobileElement.value;
+		
+		if (theMobile === "") {
+		var finalMobile = theMobile;
+		} else {
+		var finalMobile = "M: " + theMobile;
+		}
+	
+		var header = $("#headerSelect").val();
+		console.log(header);
+		
+		
+		var roomBld = theRoom + " Stayer Center";
+		
+
+	
+		var comm = finalPhone + " " + finalMobile + " " + finalFax;
+
+		
+		var urlElement = document.getElementById("userURL");
+        var theURL = urlElement.value;
+
+		var linkURL = theURL.replace(/(https?:\/\/(\S+))/i, "<a href='$1' style='color: #0d233f; font-size: 16px;'>$2</a>");
+		
+		document.getElementById("nameDiv").innerHTML = theName;		
+		document.getElementById("roomDiv").innerHTML = roomBld;	
+		document.getElementById("titleDiv").innerHTML = titleProg;
+ 		document.getElementById("phoneDiv").innerHTML = comm;
+		document.getElementById("linkDiv").innerHTML = linkURL;
+      }
+	  
+	  
+	  function selectElementContents(el) {
+    var body = document.body, range, sel;
+    if (document.createRange && window.getSelection) {
+        range = document.createRange();
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        try {
+            range.selectNodeContents(el);
+            sel.addRange(range);
+        } catch (e) {
+            range.selectNode(el);
+            sel.addRange(range);
+        }
+    } else if (body.createTextRange) {
+        range = body.createTextRange();
+        range.moveToElementText(el);
+        range.select();
+    }
+}
+
+	function selectAndCopy(){
+	selectElementContents( document.getElementById('sig') );
+	document.getElementById("copy").innerHTML = "Now, press Ctrl+C (or Cmd+C on Mac) to copy text and paste it into your email client under <a href='http://office.microsoft.com/en-us/outlook-help/create-and-add-an-email-message-signature-HA010352514.aspx' target='_blank'> new signature.</a>";
+	
+	}
+	//This is where we're working
+	$(function(){
+
+
+		
+	});
+</script> 
+<div style="padding-left:20px; padding-top:5px;">
+<h1>Stayer Center Email Signature Creator</h1>
+<table>
+<tr><td>
+<table>
+<tr><td align="right">
+First and Last Name:  </td><td>     <input id="userName" type="text"><br> </td></tr><tr><td align="right">
+Title:   </td><td>   <input id="userTitle" type="text"><br></td></tr><tr><td align="right">
+Program or Department: </td><td>   <input id="userProgram" type="text"><br></td></tr><tr><td align="right">
+Room #:  </td><td>  <input id="userRoom" type="text"><br></td></tr><tr><td align="right">
+Phone #: </td><td>   <input id="userPhone" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Mobile # (optional): </td><td>   <input id="userMobile" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Fax #: </td><td>   <input id="userFax" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+URL:   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br></td></tr>
+<tr><td></td><td><select id="headerSelect"><option value="">Select</option><option value="gold">Option 1</option><option value="blue">Option 2</option> </select></td></tr>
+</table>
+</td><td style="padding-left:50px;"><img src="example.jpg" /> </td></tr></table>
+  <input type="button" value="Enter Information" onClick="doStuff()">
+</div>
+<br>
+<hr>
+<div style="padding-left:20px;">
+<table width="560" border="0" cellpadding="0" cellspacing="0" id="sig"><tr>
+<td width="546"><table width="557" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="356" style="margin: 0; font-family: 'Arial, Calibri',Verdana, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.local/signature/stamp-gold.jpg" alt="" width="356" height="100"><br><br>
+
+</td>
+
+      </tr>
+
+<tr>
+<td height="140" valign="top" style="font-family: 'Arial, Verdana',Calibri, Helvetica, sans-serif; padding-left:50px;">
+<div id="nameDiv"  style="color: #0d233f; font-size: 16px;">Name</div>
+<div id="titleDiv" style="color: #0d233f; font-size: 16px; font-style:italic">  Title / Program Name    </div>
+<span  style="color: #0d233f; font-size: 16px;">            University of Notre Dame / Mendoza College of Business<br></span>
+<br>
+<div id="roomDiv" style="color: #0d233f; font-size: 16px;">Room# Stayer Center for Executive Education</div>
+<span  style="color: #0d233f; font-size: 16px;"> Notre Dame, IN 46556</span><br>
+<div id="phoneDiv" style="color: #0d233f; font-size: 16px;">P: 574.631.0000  F: 574.631.1111</div><br>
+<div id="linkDiv"><a href='http://business.nd.edu/executive_education/' style='color: #0d233f; font-size: 16px;'>business.nd.edu/executive_education/</a></div><br>
+
+
+</td>
+          </tr>
+         
+
+<tr>
+<td width="356" style="margin: 0; padding-top:16px; padding-left: 50px; font-family: 'Calibri',Verdana, Arial, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.local/signature/ndmark.jpg" alt="" width="170" height="40"></td>
+        </tr>
+</table></td>
+    <td width="14">&nbsp;</td>
+  
+  </tr></table>
+
+  </div>
+     <hr>
+  <div style="padding-left:20px;">
+   Review the signature then press: 
+  <input type="button" value="Select Signature"
+   onclick="selectAndCopy()">
+  </div>
+  
+  <div id="copy" style="padding-top:10px; padding-left:25px; color: red; font-size: 26px;">
+
+  </div><br>
+
+
+<div style="padding-left:20px;"> 
+<br><br>
+
+  
+</body>
+</html>
