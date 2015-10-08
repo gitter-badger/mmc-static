@@ -1,7 +1,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head><title>Stayer Center Email Signature Creator</title></head>
+<head><title>MCOB Email Signature Creator</title></head>
 <body style="margin: 0px;">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script language="javascript">
@@ -107,12 +107,19 @@
 	//This is where we're working
 	$(function(){
 
+		$("#headerSelect").change(function(){
+			doStuff();
+		});
 
+		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL").keyup(function(){
+			doStuff();
+		});
 		
+
 	});
 </script> 
 <div style="padding-left:20px; padding-top:5px;">
-<h1>Stayer Center Email Signature Creator</h1>
+<h1>MCOB Email Signature Creator</h1>
 <table>
 <tr><td>
 <table>
@@ -121,11 +128,11 @@ First and Last Name:  </td><td>     <input id="userName" type="text"><br> </td><
 Title:   </td><td>   <input id="userTitle" type="text"><br></td></tr><tr><td align="right">
 Program or Department: </td><td>   <input id="userProgram" type="text"><br></td></tr><tr><td align="right">
 Address:  </td><td>  <input id="userRoom" type="text"><br></td></tr><tr><td align="right">
-Phone #: </td><td>   <input id="userPhone" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
-Mobile # (optional): </td><td>   <input id="userMobile" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
-Fax #: </td><td>   <input id="userFax" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Phone #: </td><td>   <input id="userPhone" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Mobile # (optional): </td><td>   <input id="userMobile" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Fax #: </td><td>   <input id="userFax" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
 URL:   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br></td></tr>
-<tr><td></td><td>
+<tr><td align="right">Image Select:</td><td>
 	<select id="headerSelect">
 		<option value="http://static.mendoza.nd.edu/signatures/stamp-gold.jpg">Option 1</option>
 		<option value="http://static.mendoza.nd.edu/signatures/stamp-blue.jpg">Option 2</option> 
