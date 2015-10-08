@@ -56,10 +56,10 @@
 		}
 	
 		var header = $("#headerSelect").val();
-		console.log(header);
-		
-		
-		var roomBld = theRoom + " Stayer Center";
+		var $image = $("#headerImage");
+		$image.attr("src",header);
+				
+		var roomBld = theRoom;
 		
 
 	
@@ -120,12 +120,17 @@
 First and Last Name:  </td><td>     <input id="userName" type="text"><br> </td></tr><tr><td align="right">
 Title:   </td><td>   <input id="userTitle" type="text"><br></td></tr><tr><td align="right">
 Program or Department: </td><td>   <input id="userProgram" type="text"><br></td></tr><tr><td align="right">
-Room #:  </td><td>  <input id="userRoom" type="text"><br></td></tr><tr><td align="right">
+Address:  </td><td>  <input id="userRoom" type="text"><br></td></tr><tr><td align="right">
 Phone #: </td><td>   <input id="userPhone" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
 Mobile # (optional): </td><td>   <input id="userMobile" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
 Fax #: </td><td>   <input id="userFax" type="text">Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
 URL:   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br></td></tr>
-<tr><td></td><td><select id="headerSelect"><option value="">Select</option><option value="gold">Option 1</option><option value="blue">Option 2</option> </select></td></tr>
+<tr><td></td><td>
+	<select id="headerSelect">
+		<option value="http://static.mendoza.nd.edu/signatures/stamp-gold.jpg">Option 1</option>
+		<option value="http://static.mendoza.nd.edu/signatures/stamp-blue.jpg">Option 2</option> 
+	</select>
+</td></tr>
 </table>
 </td><td style="padding-left:50px;"><img src="example.jpg" /> </td></tr></table>
   <input type="button" value="Enter Information" onClick="doStuff()">
@@ -136,7 +141,7 @@ URL:   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br><
 <table width="560" border="0" cellpadding="0" cellspacing="0" id="sig"><tr>
 <td width="546"><table width="557" border="0" cellpadding="0" cellspacing="0">
 <tr>
-<td width="356" style="margin: 0; font-family: 'Arial, Calibri',Verdana, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.local/signature/stamp-gold.jpg" alt="" width="356" height="100"><br><br>
+<td width="356" style="margin: 0; font-family: 'Arial, Calibri',Verdana, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img id="headerImage" src="http://static.local/signature/stamp-gold.jpg" alt="" width="356" height="100"><br><br>
 
 </td>
 
@@ -159,7 +164,7 @@ URL:   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br><
          
 
 <tr>
-<td width="356" style="margin: 0; padding-top:16px; padding-left: 50px; font-family: 'Calibri',Verdana, Arial, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.local/signature/ndmark.jpg" alt="" width="170" height="40"></td>
+<td width="356" style="margin: 0; padding-top:16px; padding-left: 50px; font-family: 'Calibri',Verdana, Arial, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.mendoza.nd.edu/signatures/ndmark.jpg" alt="" width="170" height="40"></td>
         </tr>
 </table></td>
     <td width="14">&nbsp;</td>
