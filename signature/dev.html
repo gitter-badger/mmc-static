@@ -1,0 +1,191 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head><title>MCOB Email Signature Creator</title></head>
+<body style="margin: 0px;">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script language="javascript">
+
+   function doStuff()
+      {
+        var nameElement = document.getElementById("userName");
+        var theName = nameElement.value;
+		
+		var titleElement = document.getElementById("userTitle");
+        var theTitle = titleElement.value;
+				
+		var programElement = document.getElementById("userProgram");
+        var theProgram = programElement.value;
+        
+		if (theProgram === "") {
+			var titleProg = theTitle;
+		} else {
+			var titleProg = theTitle + " / " + theProgram;
+		};
+	
+		var roomElement = document.getElementById("userRoom");
+        var theRoom = roomElement.value;
+		
+		
+		var phoneElement = document.getElementById("userPhone");
+        var thePhone = phoneElement.value;
+
+		if (thePhone == "") {
+        var finalPhone = thePhone;
+		} else { 
+		var finalPhone = "P: " + thePhone;
+		}
+	
+    	var faxElement = document.getElementById("userFax");
+       var theFax = faxElement.value;
+		
+		if (theFax === "") {
+		var finalFax = theFax;
+		} else {
+		var finalFax = "F: " + theFax;
+		}
+		
+		
+		var mobileElement = document.getElementById("userMobile");
+		var theMobile = mobileElement.value;
+		
+		if (theMobile === "") {
+		var finalMobile = theMobile;
+		} else {
+		var finalMobile = "M: " + theMobile;
+		}
+	
+		var header = $("#headerSelect").val();
+		var $image = $("#headerImage");
+		$image.attr("src",header);
+				
+		var roomBld = theRoom;
+		
+
+	
+		var comm = finalPhone + " " + finalMobile + " " + finalFax;
+
+		
+		var urlElement = document.getElementById("userURL");
+        var theURL = urlElement.value;
+
+		var linkURL = theURL.replace(/(https?:\/\/(\S+))/i, "<a href='$1' style='color: #0d233f; font-size: 16px;'>$2</a>");
+		
+		document.getElementById("nameDiv").innerHTML = theName;		
+		document.getElementById("roomDiv").innerHTML = roomBld;	
+		document.getElementById("titleDiv").innerHTML = titleProg;
+ 		document.getElementById("phoneDiv").innerHTML = comm;
+		document.getElementById("linkDiv").innerHTML = linkURL;
+      }
+	  
+	  
+	  function selectElementContents(el) {
+    var body = document.body, range, sel;
+    if (document.createRange && window.getSelection) {
+        range = document.createRange();
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        try {
+            range.selectNodeContents(el);
+            sel.addRange(range);
+        } catch (e) {
+            range.selectNode(el);
+            sel.addRange(range);
+        }
+    } else if (body.createTextRange) {
+        range = body.createTextRange();
+        range.moveToElementText(el);
+        range.select();
+    }
+}
+
+	function selectAndCopy(){
+	selectElementContents( document.getElementById('sig') );
+	document.getElementById("copy").innerHTML = "Now, press Ctrl+C (or Cmd+C on Mac) to copy text and paste it into your email client under <a href='https://support.google.com/mail/answer/8395?hl=en' target='_blank'> new signature.</a>";
+	
+	}
+	//This is where we're working
+	$(function(){
+
+		$("#headerSelect").change(function(){
+			doStuff();
+		});
+
+		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL").keyup(function(){
+			doStuff();
+		});
+		
+
+	});
+</script> 
+<div style="padding-left:20px; padding-top:5px;">
+<h1>MCOB Email Signature Creator</h1>
+<table>
+<tr><td>
+<table>
+<tr><td align="right">
+First and Last Name:  </td><td>     <input id="userName" type="text"><br> </td></tr><tr><td align="right">
+Title:   </td><td>   <input id="userTitle" type="text"><br></td></tr><tr><td align="right">
+Program or Department: </td><td>   <input id="userProgram" type="text"><br></td></tr><tr><td align="right">
+Address:  </td><td>  <input id="userRoom" type="text"><br></td></tr><tr><td align="right">
+Phone #: </td><td>   <input id="userPhone" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Mobile # (optional): </td><td>   <input id="userMobile" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Fax #: </td><td>   <input id="userFax" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+URL:   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br></td></tr>
+</table>
+</td><td style="padding-left:50px;"><img src="example.jpg" /> </td></tr></table>
+</div>
+<br>
+<hr>
+<div style="padding-left:20px;">
+<table width="228" border="0" cellpadding="0" cellspacing="0" id="sig"><tr>
+<td width="546"><table width="557" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="356" style="margin: 0; font-family: 'Arial, Calibri',Verdana, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img id="headerImage" src="http://http://static.mendoza.nd.edu/signatures/stamp-gold2.jpg" alt="" width="228" height="64"><br><br>
+
+</td>
+
+      </tr>
+
+<tr>
+<td height="140" valign="top" style="font-family: 'Arial, Verdana',Calibri, Helvetica, sans-serif; padding-left:33px;">
+<div id="nameDiv"  style="color: #0d233f; font-size: 16px;">Name</div>
+<div id="titleDiv" style="color: #0d233f; font-size: 16px; font-style:italic">  Title / Program Name    </div>
+<br>
+<div id="roomDiv" style="color: #0d233f; font-size: 16px;">Room# Stayer Center for Executive Education</div>
+<span  style="color: #0d233f; font-size: 16px;"> Notre Dame, IN 46556</span><br>
+<div id="phoneDiv" style="color: #0d233f; font-size: 16px;">P: 574.631.0000  F: 574.631.1111</div><br>
+<div id="linkDiv"><a href='http://mendoza.nd.edu/' style='color: #0d233f; font-size: 16px;'>mendoza.nd.edu</a></div><br>
+
+
+</td>
+          </tr>
+         
+
+<tr>
+<td width="356" style="margin: 0; padding-top:16px; padding-left: 50px; font-family: 'Calibri',Verdana, Arial, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.mendoza.nd.edu/signatures/ndmark.jpg" alt="" width="170" height="40"></td>
+        </tr>
+</table></td>
+    <td width="14">&nbsp;</td>
+  
+  </tr></table>
+
+  </div>
+     <hr>
+  <div style="padding-left:20px;">
+   Review the signature then press: 
+  <input type="button" value="Select Signature"
+   onclick="selectAndCopy()">
+  </div>
+  
+  <div id="copy" style="padding-top:10px; padding-left:25px; color: red; font-size: 26px;">
+
+  </div><br>
+
+
+<div style="padding-left:20px;"> 
+<br><br>
+
+  
+</body>
+</html>
