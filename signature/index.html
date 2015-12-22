@@ -101,28 +101,28 @@
         
         var $twitterUrl = $("#twitterUrl");
         
-        if($twitterUrl.val().indexOf("http://") != -1)
+        if($twitterUrl.val().indexOf("http") != -1)
         {
             $socialMediaDiv.append("<a href='" + $twitterUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/tw.png'></a>");
         }
         
         var $facebookUrl = $("#facebookUrl");
         
-        if($facebookUrl.val().indexOf("http://") != -1)
+        if($facebookUrl.val().indexOf("http") != -1)
         {
             $socialMediaDiv.append("<a href='" + $facebookUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/fb.png'></a>");
         }
         
         var $youTubeUrl = $("#youTubeUrl");
         
-        if($youTubeUrl.val().indexOf("http://") != -1)
+        if($youTubeUrl.val().indexOf("http") != -1)
         {
             $socialMediaDiv.append("<a href='" + $youTubeUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/yt.png'></a>");
         }
         
         var $linkedInUrl = $("#linkedInUrl");
         
-        if($linkedInUrl.val().indexOf("http://") != -1)
+        if($linkedInUrl.val().indexOf("http") != -1)
         {
             $socialMediaDiv.append("<a href='" + $linkedInUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/in.png'></a>");
         }
@@ -193,25 +193,25 @@ URL (optional):   </td><td>  <input id="userURL" type="text"> - Must include "ht
 <tr>
     <td align="right">Twitter (optional):</td>
     <td>
-        <input id="twitterUrl" type="text"/> - Must include "http://"
+        <input id="twitterUrl" type="text"/> - Must include "http:// or https://"
     </td>
 </tr>
 <tr>
     <td align="right">Facebook (optional):</td>
     <td>
-        <input id="facebookUrl" type="text"/> - Must include "http://"
+        <input id="facebookUrl" type="text"/> - Must include "http:// or https://"
     </td>
 </tr>
 <tr>
     <td align="right">YouTube (optional):</td>
     <td>
-        <input id="youTubeUrl" type="text"/> - Must include "http://"
+        <input id="youTubeUrl" type="text"/> - Must include "http:// or https://"
     </td>
 </tr>
 <tr>
     <td align="right">LinkedIn (optional):</td>
     <td>
-        <input id="linkedInUrl" type="text"/> - Must include "http://"
+        <input id="linkedInUrl" type="text"/> - Must include "http:// or https://"
     </td>
 </tr>
 </table>
