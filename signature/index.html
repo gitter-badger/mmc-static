@@ -95,6 +95,37 @@
 		document.getElementById("titleDiv").innerHTML = titleProg;
  		document.getElementById("phoneDiv").innerHTML = comm;
 		document.getElementById("linkDiv").innerHTML = linkURL;
+        
+        var $socialMediaDiv = $("#socialMediaDiv");
+        $socialMediaDiv.html("");
+        
+        var $twitterUrl = $("#twitterUrl");
+        
+        if($twitterUrl.val().indexOf("http://") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $twitterUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/tw.png'></a>");
+        }
+        
+        var $facebookUrl = $("#facebookUrl");
+        
+        if($facebookUrl.val().indexOf("http://") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $facebookUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/fb.png'></a>");
+        }
+        
+        var $youTubeUrl = $("#youTubeUrl");
+        
+        if($youTubeUrl.val().indexOf("http://") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $youTubeUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/yt.png'></a>");
+        }
+        
+        var $linkedInUrl = $("#linkedInUrl");
+        
+        if($linkedInUrl.val().indexOf("http://") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $linkedInUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/in.png'></a>");
+        }
       }
 	  
 	  
@@ -130,7 +161,7 @@
 			doStuff();
 		});
 
-		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL,#userEmail").keyup(function(){
+		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL,#userEmail,input[type=text]").keyup(function(){
 			doStuff();
 		});
 		
@@ -159,6 +190,30 @@ Address (optional):  </td><td>  <input id="userRoom" type="text"> (Mendoza or St
 Mobile # (optional): </td><td>   <input id="userMobile" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
 Fax # (optional): </td><td>   <input id="userFax" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
 URL (optional):   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br></td></tr>
+<tr>
+    <td align="right">Twitter (optional):</td>
+    <td>
+        <input id="twitterUrl" type="text"/> - Must include "http://"
+    </td>
+</tr>
+<tr>
+    <td align="right">Facebook (optional):</td>
+    <td>
+        <input id="facebookUrl" type="text"/> - Must include "http://"
+    </td>
+</tr>
+<tr>
+    <td align="right">YouTube (optional):</td>
+    <td>
+        <input id="youTubeUrl" type="text"/> - Must include "http://"
+    </td>
+</tr>
+<tr>
+    <td align="right">LinkedIn (optional):</td>
+    <td>
+        <input id="linkedInUrl" type="text"/> - Must include "http://"
+    </td>
+</tr>
 </table>
 </td><td style="padding-left:50px;"><img src="http://static-internal.mendoza.nd.edu/signature/example.jpg" /> </td></tr></table>
 </div>
@@ -182,7 +237,7 @@ URL (optional):   </td><td>  <input id="userURL" type="text"> - Must include "ht
 <div id="emailDiv" style="color: #0d233f; font-size: 16px;">email@nd.edu</div>
 <div id="linkDiv"><a href='http://mendoza.nd.edu/' style='color: #0d233f; font-size: 16px;'>mendoza.nd.edu</a></div><br>
 <div id="roomDiv" style="color: #0d233f; font-size: 16px;">Room# Mendoza <br />Notre Dame, IN 46556</div>
-
+<div id="socialMediaDiv"></div>
 </td>
           </tr>
          
