@@ -1,8 +1,18 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html>
-<head><title>MCOB Email Signature Creator</title></head>
-<body style="margin: 0px;">
+<head><title>MCOB Email Signature Creator</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-722404-24', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script language="javascript">
 
@@ -164,10 +174,15 @@
 		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL,#userEmail,input[type=text]").keyup(function(){
 			doStuff();
 		});
-		
+		$("#selectButton").click(function(){
+      ga('send', 'event', 'Signature', 'select', $("#userName").val());
+     // console.log($("#userName").val());
+    });
 
 	});
 </script> 
+</head>
+<body style="margin: 0px;">
 <div style="padding-left:20px; padding-top:5px;">
 <h1>MCOB Email Signature Creator</h1>
 <table>
@@ -256,7 +271,7 @@ URL (optional):   </td><td>  <input id="userURL" type="text"> - Must include "ht
      <hr>
   <div style="padding-left:20px;">
    Review the signature then press: 
-  <input type="button" value="Select Signature"
+  <input type="button" id="selectButton" value="Select Signature"
    onclick="selectAndCopy()">
   </div>
   
