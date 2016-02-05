@@ -1,0 +1,303 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head><title>MCOB Email Signature Creator</title>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-722404-24', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script language="javascript">
+
+   function doStuff()
+      {
+        var nameElement = document.getElementById("userName");
+        var theName = nameElement.value;
+		
+		var titleElement = document.getElementById("userTitle");
+        var theTitle = titleElement.value;
+				
+		var programElement = document.getElementById("userProgram");
+        var theProgram = programElement.value;
+        
+		if (theProgram === "") {
+			var titleProg = theTitle;
+		} else {
+			var titleProg = theTitle + '<br>' + theProgram;
+		};
+
+      var undElement = document.getElementById("uND");
+        var theUnd = undElement.value;
+
+        if (undElement.checked == true) {
+          var includeUni = theUnd;
+        } else {
+          var includeUni = "";
+        }
+	
+		var roomElement = document.getElementById("userRoom");
+        var theRoom = roomElement.value;
+
+       	var roomElement = document.getElementById("userEmail");
+        var theEmail = roomElement.value;
+		
+		
+		var phoneElement = document.getElementById("userPhone");
+        var thePhone = phoneElement.value;
+
+		if (thePhone == "") {
+        var finalPhone = thePhone;
+		} else { 
+		var finalPhone = thePhone + " (Office)";
+		}
+	
+    	var faxElement = document.getElementById("userFax");
+       var theFax = faxElement.value;
+		
+		if (theFax === "") {
+		var finalFax = theFax;
+		} else {
+		var finalFax = theFax + " (Fax)";
+		}
+		
+		
+		var mobileElement = document.getElementById("userMobile");
+		var theMobile = mobileElement.value;
+		
+		if (theMobile === "") {
+		var finalMobile = theMobile;
+		} else {
+		var finalMobile = theMobile + " (Mobile)";
+		}
+	
+		var header = $("#headerSelect").val();
+		var $image = $("#headerImage");
+		$image.attr("src",header);
+				
+		if (theRoom === "") {
+			var roomBld = theRoom
+		} else {
+			var roomBld = theRoom + '<br /> Notre Dame, IN 46556';	
+		}
+
+		
+		
+
+	
+		var comm = finalPhone;
+
+		if (finalMobile) {
+			comm += '<br />' + finalMobile;
+		}
+		if (finalFax) {
+			comm += '<br />' + finalFax;
+		}
+
+		
+		var urlElement = document.getElementById("userURL");
+        var theURL = urlElement.value;
+
+		var linkURL = theURL.replace(/(https?:\/\/(\S+))/i, "<a href='$1' style='color: #0d233f; font-size: 16px;'>$2</a>");
+
+		var emailLink = '<a href="mailto:' + theEmail + '" style="color: #0d233f; font-size: 16px;">' + theEmail + '</a>';
+		
+		document.getElementById("nameDiv").innerHTML = theName;	
+		document.getElementById("emailDiv").innerHTML = emailLink;	
+		document.getElementById("roomDiv").innerHTML = roomBld;	
+		document.getElementById("titleDiv").innerHTML = titleProg;
+    document.getElementById("undDiv").innerHTML = includeUni;
+ 		document.getElementById("phoneDiv").innerHTML = comm;
+		document.getElementById("linkDiv").innerHTML = linkURL;
+        
+        var $socialMediaDiv = $("#socialMediaDiv");
+        $socialMediaDiv.html("");
+        
+        var $twitterUrl = $("#twitterUrl");
+        
+        if($twitterUrl.val().indexOf("http") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $twitterUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/tw.png'></a>");
+        }
+        
+        var $facebookUrl = $("#facebookUrl");
+        
+        if($facebookUrl.val().indexOf("http") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $facebookUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/fb.png'></a>");
+        }
+        
+        var $youTubeUrl = $("#youTubeUrl");
+        
+        if($youTubeUrl.val().indexOf("http") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $youTubeUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/yt.png'></a>");
+        }
+        
+        var $linkedInUrl = $("#linkedInUrl");
+        
+        if($linkedInUrl.val().indexOf("http") != -1)
+        {
+            $socialMediaDiv.append("<a href='" + $linkedInUrl.val() + "'><img src='http://static.mendoza.nd.edu/signatures/in.png'></a>");
+        }
+      }
+	  
+	  
+	  function selectElementContents(el) {
+    var body = document.body, range, sel;
+    if (document.createRange && window.getSelection) {
+        range = document.createRange();
+        sel = window.getSelection();
+        sel.removeAllRanges();
+        try {
+            range.selectNodeContents(el);
+            sel.addRange(range);
+        } catch (e) {
+            range.selectNode(el);
+            sel.addRange(range);
+        }
+    } else if (body.createTextRange) {
+        range = body.createTextRange();
+        range.moveToElementText(el);
+        range.select();
+    }
+}
+
+	function selectAndCopy(){
+	selectElementContents( document.getElementById('sig') );
+	document.getElementById("copy").innerHTML = "Now, press Ctrl+C (or Cmd+C on Mac) to copy text and paste it into your email client under <a href='https://support.google.com/mail/answer/8395?hl=en' target='_blank'> new signature.</a>";
+	
+	}
+	//This is where we're working
+	$(function(){
+
+		$("#headerSelect").change(function(){
+			doStuff();
+		});
+
+		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL,#userEmail,input[type=text]").keyup(function(){
+			doStuff();
+		});
+		$("#uND,input[type=text]").click(function(){
+      doStuff();
+    });
+    $("#selectButton").click(function(){
+      ga('send', 'event', 'Signature', 'select', $("#userName").val());
+     // console.log($("#userName").val());
+    });
+
+	});
+</script> 
+</head>
+<body style="margin: 0px;">
+<div style="padding-left:20px; padding-top:5px;">
+<h1>MCOB Email Signature Creator</h1>
+<table>
+<tr><td>
+<table>
+<tr><td align="right" style="color:red; font-weight:600;">
+First and Last Name:  </td><td>     <input id="userName" type="text"><br> </td></tr><tr><td align="right" style="color:red; font-weight:600;">
+Title:   </td><td>   <input id="userTitle" type="text"><br></td></tr><tr><td align="right" style="color:red; font-weight:600;">
+Program or Department: </td><td>   <input id="userProgram" type="text"><br></td></tr>
+<tr><td align="right">List "University of Notre Dame"? </td><td>   <input id="uND" type="checkbox" value="University of Notre Dame"><br></td></tr>
+
+<tr><td align="right" style="color:red; font-weight:600;">
+Email:  </td><td>  <input id="userEmail" type="text"><br></td></tr>
+
+<tr><td align="right" style="color:red; font-weight:600;">
+Phone #: </td><td>   <input id="userPhone" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr>
+
+<tr><td align="right">
+Address (optional):  </td><td>  <input id="userRoom" type="text"> (Mendoza or Stayer Center)<br></td></tr>
+<tr><td align="right">
+Mobile # (optional): </td><td>   <input id="userMobile" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+Fax # (optional): </td><td>   <input id="userFax" type="text"> Area code and prefix separated by periods.  e.g. (XXX.XXX.XXXX)<br></td></tr><tr><td align="right">
+URL (optional):   </td><td>  <input id="userURL" type="text"> - Must include "http://"<br></td></tr>
+<tr>
+    <td align="right">Twitter (optional):</td>
+    <td>
+        <input id="twitterUrl" type="text"/> - Must include "http:// or https://"
+    </td>
+</tr>
+<tr>
+    <td align="right">Facebook (optional):</td>
+    <td>
+        <input id="facebookUrl" type="text"/> - Must include "http:// or https://"
+    </td>
+</tr>
+<tr>
+    <td align="right">YouTube (optional):</td>
+    <td>
+        <input id="youTubeUrl" type="text"/> - Must include "http:// or https://"
+    </td>
+</tr>
+<tr>
+    <td align="right">LinkedIn (optional):</td>
+    <td>
+        <input id="linkedInUrl" type="text"/> - Must include "http:// or https://"
+    </td>
+</tr>
+</table>
+</td><td style="padding-left:50px;"><img src="http://static-internal.mendoza.nd.edu/signature/example.jpg" /> </td></tr></table>
+</div>
+<br>
+<hr>
+<div style="padding-left:20px;">
+<table width="240" border="0" cellpadding="0" cellspacing="0" id="sig"><tr>
+<td width="240"><table width="240" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td width="356" style="margin: 0; font-family: 'Arial, Calibri',Verdana, Helvetica, sans-serif; color: #4a372b;"><img src="http://static.mendoza.nd.edu/signatures/stamp-gold-3.gif" alt="" width="228" height="64">
+
+</td>
+
+      </tr>
+
+<tr>
+<td height="140" valign="top" style="font-family: 'Arial, Verdana',Calibri, Helvetica, sans-serif; padding-left:33px;">
+<div id="nameDiv"  style="color: #0d233f; font-size: 16px; font-weight: 600;">Name</div>
+<div id="titleDiv" style="color: #0d233f; font-size: 13.5px; font-style:italic">  Title <br /> Department    </div>
+<div id="undDiv" style="color: #0d233f; font-size: 13.5px; font-style:italic">  University of Notre Dames    </div>
+<div id="phoneDiv" style="color: #0d233f; font-size: 13.5px;">P: 574.631.0000 <br /> M:574.631.2222 <br />F: 574.631.1111</div>
+<div id="emailDiv" style="color: #0d233f; font-size: 13.5px;">email@nd.edu</div>
+<div id="linkDiv"><a href='http://mendoza.nd.edu/' style='color: #0d233f; font-size: 13.5px;'>mendoza.nd.edu</a></div><br>
+<div id="roomDiv" style="color: #0d233f; font-size: 13.5px;">Room# Mendoza <br />Notre Dame, IN 46556</div>
+<div id="socialMediaDiv"></div>
+</td>
+          </tr>
+         
+
+<tr>
+<!-- 	
+<td width="356" style="margin: 0; padding-top:16px; padding-left: 33px; font-family: 'Calibri',Verdana, Arial, Helvetica, sans-serif; color: #4a372b; font-size: 12px;"><img src="http://static.mendoza.nd.edu/signatures/ndmark.jpg" alt="" width="170" height="40"></td>
+-->
+        </tr>
+</table></td>
+    <td width="14">&nbsp;</td>
+  
+  </tr></table>
+
+  </div>
+     <hr>
+  <div style="padding-left:20px;">
+   Review the signature then press: 
+  <input type="button" id="selectButton" value="Select Signature"
+   onclick="selectAndCopy()">
+  </div>
+  
+  <div id="copy" style="padding-top:10px; padding-left:25px; color: red; font-size: 26px;">
+
+  </div><br>
+
+
+<div style="padding-left:20px;"> 
+<br><br>
+
+  
+</body>
+</html>
