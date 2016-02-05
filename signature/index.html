@@ -32,6 +32,15 @@
 		} else {
 			var titleProg = theTitle + '<br>' + theProgram;
 		};
+
+      var undElement = document.getElementById("uND");
+        var theUnd = undElement.value;
+
+        if (undElement.checked == true) {
+          var includeUni = theUnd;
+        } else {
+          var includeUni = "";
+        }
 	
 		var roomElement = document.getElementById("userRoom");
         var theRoom = roomElement.value;
@@ -103,6 +112,7 @@
 		document.getElementById("emailDiv").innerHTML = emailLink;	
 		document.getElementById("roomDiv").innerHTML = roomBld;	
 		document.getElementById("titleDiv").innerHTML = titleProg;
+    document.getElementById("undDiv").innerHTML = includeUni;
  		document.getElementById("phoneDiv").innerHTML = comm;
 		document.getElementById("linkDiv").innerHTML = linkURL;
         
@@ -174,7 +184,10 @@
 		$("#userName,#userTitle,#userProgram,#userRoom,#userPhone,#userFax,#userMobile,#userURL,#userEmail,input[type=text]").keyup(function(){
 			doStuff();
 		});
-		$("#selectButton").click(function(){
+		$("#uND,input[type=text]").click(function(){
+      doStuff();
+    });
+    $("#selectButton").click(function(){
       ga('send', 'event', 'Signature', 'select', $("#userName").val());
      // console.log($("#userName").val());
     });
@@ -192,6 +205,7 @@
 First and Last Name:  </td><td>     <input id="userName" type="text"><br> </td></tr><tr><td align="right" style="color:red; font-weight:600;">
 Title:   </td><td>   <input id="userTitle" type="text"><br></td></tr><tr><td align="right" style="color:red; font-weight:600;">
 Program or Department: </td><td>   <input id="userProgram" type="text"><br></td></tr>
+<tr><td align="right">Include "University of Notre Dame"? </td><td>   <input id="uND" type="checkbox" value="University of Notre Dame"><br></td></tr>
 
 <tr><td align="right" style="color:red; font-weight:600;">
 Email:  </td><td>  <input id="userEmail" type="text"><br></td></tr>
@@ -248,6 +262,7 @@ URL (optional):   </td><td>  <input id="userURL" type="text"> - Must include "ht
 <td height="140" valign="top" style="font-family: 'Arial, Verdana',Calibri, Helvetica, sans-serif; padding-left:33px;">
 <div id="nameDiv"  style="color: #0d233f; font-size: 16px; font-weight: 600;">Name</div>
 <div id="titleDiv" style="color: #0d233f; font-size: 13.5px; font-style:italic">  Title <br /> Department    </div>
+<div id="undDiv" style="color: #0d233f; font-size: 13.5px; font-style:italic">  University of Notre Dames    </div>
 <div id="phoneDiv" style="color: #0d233f; font-size: 13.5px;">P: 574.631.0000 <br /> M:574.631.2222 <br />F: 574.631.1111</div>
 <div id="emailDiv" style="color: #0d233f; font-size: 13.5px;">email@nd.edu</div>
 <div id="linkDiv"><a href='http://mendoza.nd.edu/' style='color: #0d233f; font-size: 13.5px;'>mendoza.nd.edu</a></div><br>
